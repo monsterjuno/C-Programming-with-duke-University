@@ -17,15 +17,10 @@ int max (int a, int b) {
 
 //Declare your rectangle structure here!
 typedef struct rect {
-  int x;
-  int y;
-  int width;
-  int height;
+  int x, y, width, height;
 } rectangle;
 
 rectangle canonicalize(rectangle r) {
-  //Change negative width and heights to positive
-  //while adjusting x or y as applicable
   if (r.width < 0) {
     r.x += r.width;
     r.width *= -1;
@@ -36,13 +31,12 @@ rectangle canonicalize(rectangle r) {
   }
   return r;
 }
+
 rectangle intersection(rectangle r1, rectangle r2) {
   //Find the intersection of two rectangles
   rectangle inter_rect;
   r1 = canonicalize(r1);
   r2 = canonicalize(r2);
-
-  // Return None is impossible to intersect
   if (((r1.x + r1.width < r2.x) || (r2.x + r2.width < r1.x))
       || ((r1.y + r1.height < r2.y) || (r2.y + r2.height < r1.y))) {
     inter_rect.x = 0;
