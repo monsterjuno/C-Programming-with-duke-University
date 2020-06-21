@@ -3,54 +3,52 @@
 #include <assert.h>
 #include "deck.h"
 
-int com (card_t c1,card_t c2){
-  if ((c1.value == c2.value) &&(c1.suit == c2.suit)) return 1;
-  return 0;
-
-}
-
 void print_hand(deck_t * hand){
-  card_t ** card =hand -> cards ;
-  card_t  card1;
-  for (size_t i=0 ;i<(hand -> n_cards );i++){
-    card1=**(card +i);
-    print_card(card1);
+  card_t ** ptr = hand->cards;
+  for(int i=0; i<(hand->n_cards); i++){
+    print_card(**ptr);
+    printf("%s"," ");
+    ptr++;
   }
 }
 
 int deck_contains(deck_t * d, card_t c) {
-  card_t ** card =d -> cards ;
-  for (size_t i=0 ;i< d -> n_cards ;i++){
-    if (com(**(card+i),c)) return 1;
+  card_t ** ptr = d->cards;
+  for(int i=0; i<(d->n_cards); i++){
+    if(suit_letter(**ptr)== suit_letter(c) && value_letter(**ptr)==value_letter(c)){
+      return 1;
+    }
+    ptr++;
   }
-
   return 0;
 }
 
+void cardPtr_swap(card_t ** ptr1, card_t ** ptr2){
+  card_t * temp = *ptr1;
+  *ptr1 = *ptr2;
+  *ptr2 = temp;
+}
+
 void shuffle(deck_t * d){
-  card_t ** card =d -> cards ;
-  card_t * temp;
-  size_t n=d ->n_cards;
-  int randarry;
-  for (size_t i=0 ;i< n/2 ;i++){
-    randarry= random()%(n-i)+i;
-    temp=card[i];
-    card[i]=card[randarry];
-    card[randarry]=temp;
+  card_t ** ptr = d->cards;
+  int size = (int)(d->n_cards);
+  for(int i=0; i<size; i++){
+    int newPos = ((int)rand())%size;
+    cardPtr_swap(ptr+i,ptr+newPos);
   }
 }
 
 void assert_full_deck(deck_t * d) {
-  card_t ** card =d -> cards ;
-  card_t c;
-  int count;
-
-  for (size_t i=0 ;i< d -> n_cards ;i++){
-    c=**(card+i);
-    count=0;
-    for (size_t j=0 ;j< d -> n_cards ;j++){
-      if(com(**(card+j), c)) count ++;
+  card_t ** ptr = d->cards;
+  deck_t temp_deck;
+  temp_deck.cards = d->cards;
+  for(int i=0; i<(d->n_cards); i++){
+    card_t temp_card = **ptr;
+    assert_card_valid(temp_card);
+    if(i>0){
+      temp_deck.n_cards = (size_t)i;
+      assert(!deck_contains(&temp_deck, temp_card));
     }
-    assert(count ==1);
+    ptr++;
   }
 }
