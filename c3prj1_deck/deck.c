@@ -56,4 +56,3 @@ void assert_full_deck(deck_t * d) {
     }
   }
 }
-
