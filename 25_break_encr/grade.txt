@@ -1,0 +1,15 @@
+Grading at Wed Jun 24 06:05:33 UTC 2020
+Attempting to compile breaker.c 
+gcc -o breaker  breaker.c
+testcase1 passed
+#################################################
+testcase2:
+testcase2 passed
+#################################################
+testcase3:
+testcase3 passed
+#################################################
+testcase4:
+valgrind reported memory errors or your program ran too long
+
+Overall Grade: C
