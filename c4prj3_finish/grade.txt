@@ -1,0 +1,80 @@
+Grading at Thu Jun 25 19:26:49 UTC 2020
+Running 'make clean' to do a clean build of your project
+rm -rf *.o poker *~
+Running 'make poker OTHERFLAGS=-O3' to build your project
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o cards.o cards.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o deck.o deck.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o eval.o eval.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o future.o future.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o input.o input.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o main.o main.c
+gcc -o poker -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3 cards.o deck.o eval.o future.o input.o main.o
+ - Starting with some Texas Hold'em hands
+Running a simulation with 20000 draws for 2 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Test case passed!    
+Running a simulation with 25000 draws for 3 hands...
+Valgrind reported errors:
+==922== Memcheck, a memory error detector
+==922== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==922== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==922== Command: ./poker inp.txt 25000
+==922== Parent PID: 921
+==922== 
+Running a simulation with 25000 draws for 3 hands...
+Valgrind reported errors:
+==927== Memcheck, a memory error detector
+==927== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==927== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==927== Command: ./poker inp2.txt 25000
+==927== Parent PID: 926
+==927== 
+Running a simulation with 25000 draws for 2 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Test case passed!    
+Running a simulation with 80000 draws for 4 hands...
+Valgrind reported errors:
+==984== Memcheck, a memory error detector
+==984== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==984== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==984== Command: ./poker inp3.txt 80000
+==984== Parent PID: 983
+==984== 
+Running a simulation with 30000 draws for 2 hands...
+Valgrind reported errors:
+==989== Memcheck, a memory error detector
+==989== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==989== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==989== Command: ./poker inp.txt 30000
+==989== Parent PID: 988
+==989== 
+ - Next, few Seven Card Stud hands
+Running a simulation with 30000 draws for 2 hands...
+Valgrind reported errors:
+==994== Memcheck, a memory error detector
+==994== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==994== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==994== Command: ./poker inp.txt 30000
+==994== Parent PID: 993
+==994== 
+Running a simulation with 40000 draws for 3 hands...
+Valgrind reported errors:
+==999== Memcheck, a memory error detector
+==999== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==999== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==999== Command: ./poker inp2.txt 40000
+==999== Parent PID: 998
+==999== 
+ - Then one from a completely made up poker variant
+Running a simulation with 100000 draws for 6 hands...
+Valgrind reported errors:
+==1004== Memcheck, a memory error detector
+==1004== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==1004== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==1004== Command: ./poker whacky.txt 100000
+==1004== Parent PID: 1003
+==1004== 
+
+Overall Grade: F
