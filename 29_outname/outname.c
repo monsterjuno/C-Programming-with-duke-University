@@ -5,9 +5,10 @@
 
 char * computeOutputFileName(const char * inputName) {
   //WRITE ME
-  char * outname = malloc((strlen(inputName)+4)*sizeof(*outname));
-  strcpy(outname , inputName);
-  outname= realloc(outname ,(strlen(inputName)+10)*sizeof(*outname));
-  strcat(outname,".counts");
-  return outname;
+  char *outputName=malloc((strlen(inputName)+strlen(".counts")+1)*sizeof(*outputName));
+  if(outputName!=NULL){
+    strcpy(outputName,inputName);
+    strcat(outputName,".counts");
+  }
+  return outputName;
 }
