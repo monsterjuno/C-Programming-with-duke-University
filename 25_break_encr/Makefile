@@ -1,2 +1,4 @@
-breaker: breaker.c
-	gcc -o breaker -pedantic -std=gnu99 -Wall -Werror breaker.c
+CFLAGS=-ggdb3 -Wall -Werror -pedantic -std=gnu99
+
+breaker:
+	gcc -o breaker breaker.c
